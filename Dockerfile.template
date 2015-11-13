@@ -23,7 +23,9 @@ WORKDIR /usr/src/app
 RUN git clone git://git.osmocom.org/rtl-sdr.git
 RUN cd rtl-sdr
 RUN mkdir build
+RUN ls 
 RUN cd build
+RUN ls 
 RUN cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
 RUN make
 RUN make install
