@@ -21,10 +21,10 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 RUN git clone git://git.osmocom.org/rtl-sdr.git
-RUN cd rtl-sdr
+WORKDIR /usr/src/app/rtl-sdr
 RUN mkdir build
 RUN ls 
-RUN cd build
+WORKDIR /usr/src/app/rtl-sdr/build
 RUN ls 
 RUN cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
 RUN make
@@ -32,5 +32,7 @@ RUN make install
 RUN ldconfig
 
 RUN pip install pyrtlsdr
+
+WORKDIR /usr/src/app
 
 CMD ["bash", "start.sh"]
